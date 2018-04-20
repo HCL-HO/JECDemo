@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="color_grey">#7c7c7c</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_pink">#ff66cc</color>
+    <color name="color_orange">#ff8207</color>
+    <color name="color_red">#ff0000</color>
+    <color name="color_semi_black">#88000000</color>
+    <color name="color_yellow">#ffcf54</color>
+    <color name="color_clear">#00000000</color>
+    <color name="color_black">#000000</color>
+    <color name="color_green">#33ee33</color>
+    <color name="color_orginal_background">#B3D5EC</color>
+
+
+    <color name="actionbar_opacity">#33000000</color>
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="primary_light">#C5CAE9</color>
+    <color name="accent">#E040FB</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="mfms_theme">#B3D5EC</color>
+</resources>
