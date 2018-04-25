@@ -6,19 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.example.ericho.jecdemo.MainActivity">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VIDEO"
-            android:layout_centerInParent="true"
-            android:id="@+id/btn_vid"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="IMAGE"
-            android:layout_centerInParent="true"
-            android:layout_above="@id/btn_vid"
-            android:id="@+id/btn_img"/>
+        <FrameLayout
+            android:id="@+id/page_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 </RelativeLayout>
