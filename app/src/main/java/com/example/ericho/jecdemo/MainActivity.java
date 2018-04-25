@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.ericho.jecdemo.camera.CameraActivity;
-import com.example.ericho.jecdemo.permission.PermissionManager;
 
 import java.io.File;
 
