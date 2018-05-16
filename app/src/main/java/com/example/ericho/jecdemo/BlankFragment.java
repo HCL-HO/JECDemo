@@ -61,9 +61,10 @@ public class BlankFragment extends Fragment {
                     //https://stackoverflow.com/questions/38200282/android-os-fileuriexposedexception-file-storage-emulated-0-test-txt-exposed
                 }
             };
+
             @Override
             public void onClick(View view) {
-                if(permissionManager.requestCameraPermission(photoCallback)){
+                if (permissionManager.requestCameraPermission(photoCallback)) {
                     photoCallback.onPermissionsGranted();
                 }
             }
@@ -85,8 +86,8 @@ public class BlankFragment extends Fragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(PermissionManager.arePermissionGranted(grantResults)){
-            permissionManager.onPermissionsGranted();
+        if (PermissionManager.arePermissionGranted(grantResults)) {
+            permissionManager.onPermissionsGranted(requestCode);
         }
     }
 }

@@ -4,8 +4,10 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.SparseArray;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static android.content.pm.PackageManager.PERMISSION_DENIED;
@@ -73,7 +75,7 @@ public class PermissionManager {
     }
 
     public boolean requestCameraPermission(PermissionListener listener) {
-        registerCallback(listener);
+        registerCallback(listener, REQUEST_CAMERA);
         return requestCameraPermission();
     }
 
@@ -92,7 +94,7 @@ public class PermissionManager {
     }
 
     public boolean requestPhonePermission(PermissionListener listener) {
-        registerCallback(listener);
+        registerCallback(listener, REQUEST_CAMERA);
         return requestPhonePermission();
     }
 
@@ -117,7 +119,7 @@ public class PermissionManager {
     }
 
     public boolean requestVideoPermission(PermissionListener listener) {
-        registerCallback(listener);
+        registerCallback(listener, REQUEST_CAMERA);
         return requestVideoPermission();
     }
 
@@ -132,7 +134,7 @@ public class PermissionManager {
     }
 
     public boolean requestStoragePermission(PermissionListener listener) {
-        registerCallback(listener);
+        registerCallback(listener, REQUEST_CAMERA);
         return requestStoragePermission();
     }
 
@@ -152,20 +154,21 @@ public class PermissionManager {
 
     //Register when request permission
     //Unregister / call onPermissionsGranted on request result
-    private PermissionListener listenerInstance;
+    private SparseArray<PermissionListener> listenerSparseArray = new SparseArray<>();
 
-    public void registerCallback(PermissionListener listener) {
-        this.listenerInstance = listener;
+    public void registerCallback(PermissionListener listener, int requestCamera) {
+        listenerSparseArray.put(requestCamera, listener);
     }
 
-    public void unregisterListener() {
-        listenerInstance = null;
+    public void unregisterListener(int requestCode) {
+        listenerSparseArray.remove(requestCode);
     }
 
-    public void onPermissionsGranted() {
+    public void onPermissionsGranted(int requestCode) {
+        PermissionListener listenerInstance = listenerSparseArray.get(requestCode);
         if (listenerInstance != null) {
             listenerInstance.onPermissionsGranted();
-            unregisterListener();
+            unregisterListener(requestCode);
         }
     }
 }
