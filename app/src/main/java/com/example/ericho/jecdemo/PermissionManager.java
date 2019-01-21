@@ -15,7 +15,6 @@ import static android.content.pm.PackageManager.PERMISSION_DENIED;
 /**
  * Created by ebsl on 19/1/2018.
  */
-
 public class PermissionManager {
 
     public static final int REQUEST_CAMERA = 0;
@@ -36,16 +35,16 @@ public class PermissionManager {
 
     public boolean requestPermission() {
         List<String> permissions = new ArrayList<>();
-        if (!permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (!permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE, frag.getActivity())) {
             permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
-        if (!permissionGranted(Manifest.permission.RECORD_AUDIO)) {
+        if (!permissionGranted(Manifest.permission.RECORD_AUDIO, frag.getActivity())) {
             permissions.add(Manifest.permission.RECORD_AUDIO);
         }
-        if (!permissionGranted(Manifest.permission.CAMERA)) {
+        if (!permissionGranted(Manifest.permission.CAMERA, frag.getActivity())) {
             permissions.add(Manifest.permission.CAMERA);
         }
-        if (!permissionGranted(Manifest.permission.CALL_PHONE)) {
+        if (!permissionGranted(Manifest.permission.CALL_PHONE, frag.getActivity())) {
             permissions.add(Manifest.permission.CALL_PHONE);
         }
         if (permissions.size() > 0) {
@@ -59,10 +58,10 @@ public class PermissionManager {
 
     public boolean requestCameraPermission() {
         List<String> permissions = new ArrayList<>();
-        if (!permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (!permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE, frag.getActivity())) {
             permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
-        if (!permissionGranted(Manifest.permission.CAMERA)) {
+        if (!permissionGranted(Manifest.permission.CAMERA, frag.getActivity())) {
             permissions.add(Manifest.permission.CAMERA);
         }
         if (permissions.size() > 0) {
@@ -81,7 +80,7 @@ public class PermissionManager {
 
     public boolean requestPhonePermission() {
         List<String> permissions = new ArrayList<>();
-        if (!permissionGranted(Manifest.permission.CALL_PHONE)) {
+        if (!permissionGranted(Manifest.permission.CALL_PHONE, frag.getActivity())) {
             permissions.add(Manifest.permission.CALL_PHONE);
         }
         if (permissions.size() > 0) {
@@ -100,13 +99,13 @@ public class PermissionManager {
 
     public boolean requestVideoPermission() {
         List<String> permissions = new ArrayList<>();
-        if (!permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (!permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE, frag.getActivity())) {
             permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
-        if (!permissionGranted(Manifest.permission.RECORD_AUDIO)) {
+        if (!permissionGranted(Manifest.permission.RECORD_AUDIO, frag.getActivity())) {
             permissions.add(Manifest.permission.RECORD_AUDIO);
         }
-        if (!permissionGranted(Manifest.permission.CAMERA)) {
+        if (!permissionGranted(Manifest.permission.CAMERA, frag.getActivity())) {
             permissions.add(Manifest.permission.CAMERA);
         }
         if (permissions.size() > 0) {
@@ -124,7 +123,7 @@ public class PermissionManager {
     }
 
     public boolean requestStoragePermission() {
-        if (!permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (!permissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE, frag.getActivity())) {
             frag.requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     REQUEST_STORAGE);
             return false;
@@ -138,8 +137,8 @@ public class PermissionManager {
         return requestStoragePermission();
     }
 
-    private boolean permissionGranted(String permission) {
-        return ContextCompat.checkSelfPermission(frag.getActivity(),
+    public static boolean permissionGranted(String permission, Activity activity) {
+        return ContextCompat.checkSelfPermission(activity,
                 permission) == PackageManager.PERMISSION_GRANTED;
     }
 
